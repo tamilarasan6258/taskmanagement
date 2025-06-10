@@ -1,0 +1,164 @@
+<!-- Header -->
+ <div class="main">
+    <!-- <header class="navbar">
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/VisnuPriyaa19/Task-Management-System/refs/heads/visnu/Frontend/Task-Management-System/src/assets/images/logo.png" alt="KanBoard Logo" class="logo-img" />
+      <span>KanBoard</span>
+    </div>
+    <nav class="nav-links">
+      <a routerLink="/"><b>Home</b></a>
+      <a href="#feature"><b>Features</b></a>
+      <a href="#"><b>About Us</b></a>
+      <a href="#"><b>Support</b></a>
+    </nav>
+      <div class="right" [matMenuTriggerFor]="profileMenu" class="profile">
+    <mat-icon>account_circle</mat-icon>
+  </div>
+  </header> -->
+<header class="app-header">
+  <div class="left">
+      <img src="https://raw.githubusercontent.com/VisnuPriyaa19/Task-Management-System/refs/heads/visnu/Frontend/Task-Management-System/src/assets/images/logo.png" alt="KanBoard Logo" class="logo-img" />
+    <h2><span style="color:black">KanBoard</span></h2>
+  </div>
+  <nav class="nav-links">
+      <a routerLink="/"><b>Home</b></a>
+      <a href="#feature"><b>Features</b></a>
+      <a href="#"><b>About Us</b></a>
+      <a href="#"><b>Support</b></a>
+    </nav>
+  <div class="right" [matMenuTriggerFor]="profileMenu" class="profile">
+    <mat-icon class="profile-icon">account_circle</mat-icon>
+  </div>
+</header>
+
+<mat-menu #profileMenu="matMenu">
+  <button mat-menu-item disabled>
+    <mat-icon>person</mat-icon>
+    <!-- <span>{{ username }}</span> -->
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>email</mat-icon>
+    <!-- <span>{{ email }}</span> -->
+  </button>
+  <!-- <button mat-menu-item (click)="logout()"> -->
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  <!-- </button> -->
+</mat-menu>
+
+
+<div class="container">
+
+  <h2 class="project-title">Project Name : {{ projectTitle }}</h2>
+
+
+
+
+  <!-- Template-Driven Form -->
+  <form #filterForm="ngForm" (ngSubmit)="applyFilters()" novalidate>
+
+
+    
+    
+    <div class="filter-controls">
+      <!-- Priority -->
+      <mat-form-field appearance="fill">
+        <mat-label>Priority</mat-label>
+        <mat-select name="priority" [(ngModel)]="selectedPriority" #priority="ngModel" (ngModelChange)="applyFilters()">
+          <mat-option value="">All</mat-option>
+          <mat-option value="low">Low</mat-option>
+          <mat-option value="medium">Medium</mat-option>
+          <mat-option value="high">High</mat-option>
+        </mat-select>
+        <mat-error *ngIf="priority.invalid && priority.touched">Priority is required</mat-error>
+      </mat-form-field>
+
+      <!-- Start Date -->
+      <mat-form-field appearance="fill" >
+        <mat-label>Start Date</mat-label>
+        <input
+          matInput
+          name="startDate"
+          [(ngModel)]="startDate"
+          [matDatepicker]="startPicker"
+          #startDateCtrl="ngModel" 
+         (ngModelChange)="applyFilters()"
+        />
+        <mat-datepicker-toggle matSuffix [for]="startPicker" ></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+        <mat-error *ngIf="startDateCtrl.invalid && startDateCtrl.touched">
+          Start date is required
+        </mat-error>
+      </mat-form-field>
+
+      <!-- End Date -->
+      <mat-form-field appearance="fill">
+        <mat-label>End Date</mat-label>
+        <input 
+          matInput
+          name="endDate"
+          [(ngModel)]="endDate"
+          [matDatepicker]="endPicker"
+          #endDateCtrl="ngModel"
+          (ngModelChange)="applyFilters()"
+        />
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+        <mat-error *ngIf="endDateCtrl.invalid && endDateCtrl.touched">
+          End date is required
+        </mat-error>
+      </mat-form-field>
+      <!-- Search Bar -->
+
+  <mat-form-field appearance="fill">
+    <mat-label>Search Task</mat-label>
+    <input matInput placeholder="Enter task name" [(ngModel)]="searchTerm" name="searchTerm" (ngModelChange)="applyFilters()" />
+  </mat-form-field>
+
+      
+      <button mat-raised-button color="warn" type="button" (click)="clearFilters()">Clear</button>
+    </div>
+
+
+
+  </form>
+
+  <!-- Kanban Columns -->
+  <div class="board">
+    <div class="column {{ status }}"
+         *ngFor="let status of statuses"
+         cdkDropList
+         [id]="status"
+         [cdkDropListData]="tasks[status]"
+         [cdkDropListConnectedTo]="dropListIds"
+         (cdkDropListDropped)="onDrop($event, status)">
+      <h3>
+        {{ status | titlecase }}
+        <button (click)="openAddTaskDialog(status)">+</button>
+      </h3>
+
+      <div *ngFor="let task of paginatedTasks[status]" cdkDrag>
+  <app-task-card [task]="task" (taskClick)="openTaskDetails($event)" />
+</div>
+
+<!-- Pagination Controls (only if tasks > 3) -->
+<div class="pagination-controls" *ngIf="tasks[status].length > pageSize">
+  <button mat-icon-button (click)="prevPage(status)" [disabled]="currentPage[status] === 0">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+
+  
+
+  <button mat-icon-button (click)="nextPage(status)" 
+    [disabled]="currentPage[status] >= getTotalPages(tasks[status].length) - 1">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>
+
+
+
+    
+    </div>
+    
+  </div>
+</div>

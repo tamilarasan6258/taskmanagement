@@ -1,0 +1,54 @@
+<div class="register-page">
+  <!-- Reused Header -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/VisnuPriyaa19/Task-Management-System/refs/heads/visnu/Frontend/Task-Management-System/src/assets/images/logo.png" alt="KanBoard Logo" class="logo-img" />
+      <span>KanBoard</span>
+    </div>
+    <nav class="nav-links">
+      <a routerLink="/"><b>Home</b></a>
+      <a href="#feature"><b>Features</b></a>
+      <a href="#"><b>About Us</b></a>
+      <a href="#"><b>Support</b></a>
+    </nav>
+  </header>
+
+  <!-- Registration Form -->
+  <main class="register-container">
+    <mat-card class="register-card">
+      <h2>Welcome!!!</h2>
+      <p>Sign in to your account</p>
+
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" [(ngModel)]="uname" name="uname" placeholder="Enter your username" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" [(ngModel)]="password" name="password" placeholder="Enter your password" required />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="full-width login-button" type="submit">Sign In</button>
+    </form>
+
+
+      <p class="login-link" style="color:white">
+        Don't have an account? <a routerLink="/register" routerLinkActive="active" style="color:white">Create one here</a>
+      </p>
+
+      <p class="msg">{{ msg }}</p>
+    </mat-card>
+  </main>
+
+  <!-- Reused Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#" style="font-size:large"><b>FAQs</b></a>
+      <a href="#" style="font-size:large"><b>Contact</b></a>
+      <a href="#" style="font-size:large"><b>Privacy Policy</b></a>
+    </div>
+    <p style="margin-top: 10px; font-size:medium; color:#666">&copy; 2025 Kanboard. All rights reserved.</p>
+  </footer>
+</div>

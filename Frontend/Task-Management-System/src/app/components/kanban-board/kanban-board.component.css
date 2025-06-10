@@ -1,0 +1,298 @@
+.main {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dcd3f7, #e8d9f1);
+}
+/* --- Header Styles --- */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: white;
+  /* border-radius: 16px; */
+  /* margin: 20px; */
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 22px;
+}
+.logo-img {
+  height: 32px;
+  width: auto;
+}
+.nav-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #999;
+  font-weight: 500;
+}
+.nav-links a.active {
+  color: black;
+}
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: white; /* Deep Teal Green */
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Stronger, professional shadow */
+}
+
+.app-header .left {
+  display: flex;
+  align-items: center;
+}
+
+.app-header .logo {
+  height: 40px;
+  margin-right: 15px;
+  /* Filter for white logo if original is dark */
+  /* filter: brightness(0) invert(1); */
+}
+
+/* .app-header .site-name {
+  font-size: 1.8em;
+  font-weight: 600;
+  letter-spacing: 0.8px; 
+} */
+
+.app-header .right .profile {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.profile-icon {
+  font-size: 32px !important;
+  color: #667eea;
+  padding: 7px;
+  transition: all 0.3s ease;
+}
+
+.app-header .right .profile:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* More subtle hover */
+  transform: scale(1.05); /* Slight scale for interaction */
+}
+
+.app-header .right .profile mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+}
+
+/* --- Main Container Styles --- */
+.container {
+  max-width: 1400px;
+  margin: 30px auto;
+  padding: 25px; /* Slightly more padding */
+  background-color: #ffffff;
+  border-radius: 10px; /* Softer rounded corners */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+}
+
+.project-title {
+  text-align: center;
+  font-size: 2.6em; /* Slightly larger title */
+  color: linear-gradient(135deg, #dcd3f7, #e8d9f1); /* Slightly lighter teal for contrast */
+  margin-bottom: 35px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.project-title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 5px; /* Slightly thicker line */
+  background-color: linear-gradient(135deg, #dcd3f7, #e8d9f1); /* Light gray line */
+  border-radius: 3px;
+}
+
+/* --- Filter Form Styles --- */
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px; /* Increased gap */
+  justify-content: center;
+  margin-bottom: 35px;
+  padding: 25px;
+  background-color: linear-gradient(135deg, #dcd3f7, #e8d9f1); /* Very light background for filters */
+  border-radius: 8px;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.filter-controls mat-form-field {
+  flex: 1;
+  min-width: 220px; /* Slightly wider min-width */
+  max-width: 280px;
+}
+
+.filter-controls button {
+  padding: 0 30px; /* More padding for buttons */
+  height: 56px;
+  font-size: 1.05em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 6px; /* Slightly more rounded buttons */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  background-color: #d32f2f; /* Deep red for warning/clear */
+  color: white;
+}
+
+.filter-controls button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  background-color: #c62828; /* Darker red on hover */
+}
+
+/* --- Kanban Board Styles --- */
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Wider columns */
+  gap: 30px; /* Increased gap between columns */
+  padding: 20px;
+  /* background: linear-gradient(135deg, #dcd3f7, #e8d9f1); */
+}
+
+.column {
+  background-color: linear-gradient(135deg, #dcd3f7, #e8d9f1);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Clearer shadow */
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.column h3 {
+  font-size: 1.6em; /* Slightly larger heading */
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #455a64; /* Darker, more professional gray */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #eceff1; /* Thicker, subtle border */
+  font-weight: 600;
+}
+
+.column h3 button {
+  background-color: #967BB6; /* Professional green for add button */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px; /* Slightly larger button */
+  height: 35px;
+  font-size: 1.6em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.column h3 button:hover {
+  background-color: #A47DAB; /* Darker green on hover */
+  transform: scale(1.15); /* More pronounced scale */
+}
+
+/* Status-specific column headers for visual distinction */
+.column.todo h3 { border-bottom-color: #ff9800; color: #e65100; } /* Deep Orange */
+.column.in-progress h3 { border-bottom-color: #1976d2; color: #0d47a1; } /* Dark Blue */
+.column.done h3 { border-bottom-color: #43a047; color: #2e7d32; } /* Dark Green */
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 10px 20px;
+  }
+
+  .app-header .site-name {
+    font-size: 1.5em;
+  }
+
+  .container {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .project-title {
+    font-size: 2.2em;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .filter-controls mat-form-field {
+    max-width: 100%;
+  }
+
+  .board {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .column {
+    padding: 15px;
+  }
+
+  .column h3 {
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header .logo {
+    height: 30px;
+  }
+
+  .app-header .site-name {
+    display: none;
+  }
+
+  .project-title {
+    font-size: 1.9em;
+  }
+}
+
+/* Material Design Overrides (for specific styling control) */
+/* To make Material input labels and underlines match the primary color */
+/* You might need to use ::ng-deep if this CSS is in a component stylesheet */
+/*
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-label {
+  color: #00695c !important; 
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before {
+  background-color: rgba(0, 77, 64, 0.4) !important; 
+}
+::ng-deep .mat-form-field-appearance-fill.mat-focused .mat-form-field-ripple {
+  background-color: #00695c !important; 
+}
+::ng-deep .mat-select-value,
+::ng-deep .mat-select-arrow {
+  color: #3f4a56; 
+}
+::ng-deep .mat-select-panel .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: #004d40;
+}
+*/

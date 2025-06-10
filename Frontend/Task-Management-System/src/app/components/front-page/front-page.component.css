@@ -1,0 +1,185 @@
+/* Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at center, #e8d5f7 0%, #ffffff 80%);
+  color: #1a1a1a;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.logo-img {
+  height: 32px; /* adjust as needed */
+  width: auto;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: white;
+  border-radius: 16px;
+  margin: 20px;
+}
+.logo {
+  font-weight: 700;
+  font-size: 22px;
+}
+.nav-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #999;
+  font-weight: 500;
+}
+.nav-links a.active {
+  color: black;
+}
+.auth-buttons a {
+  margin-left: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 24px;
+}
+.auth-buttons .login {
+  color: black;
+}
+.auth-buttons .register {
+  background-color: black;
+  color: white;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 80px 20px 60px;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.hero p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 24px;
+}
+.cta-form {
+  display: inline-flex;
+  gap: 12px;
+  background: white;
+  border-radius: 40px;
+  padding: 8px 8px 8px 20px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.cta-form input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 220px;
+}
+.cta-form button {
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Feature Section */
+.feature {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 24px;
+  margin: 40px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Uniform grid layout for cards */
+.feature-left {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  flex: 1;
+}
+
+/* Uniform card style */
+.feature-card {
+  background: radial-gradient(circle at top left, #e8d5f7, #ffffff);
+  color: #1a1a1a;
+  border-radius: 16px;
+  padding: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.feature-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  padding-left: 40px;
+}
+
+.feature-right h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.feature-right p {
+  font-size: 16px;
+  color: #cfcfcf;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.footer {
+  background-color: #f9f6fc;
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+  font-size: 14px;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+  border-radius: 16px;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}

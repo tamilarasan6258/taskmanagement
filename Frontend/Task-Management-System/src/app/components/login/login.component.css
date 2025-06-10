@@ -1,0 +1,137 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* Background Gradient */
+.register-page {
+  background: linear-gradient(135deg, #dcd3f7, #e8d9f1);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar (same as front page) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: white;
+  /* border-radius: 16px; */
+  /* margin: 20px; */
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 22px;
+}
+.logo-img {
+  height: 32px;
+  width: auto;
+}
+.nav-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #999;
+  font-weight: 500;
+}
+.nav-links a.active {
+  color: black;
+}
+/* Form container */
+.register-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Card Style */
+.register-card {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.register-card h2, p {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Input Fields */
+.full-width {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Angular Material input field styles override */
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background: linear-gradient(135deg, #f4effc, #e8d9f1) !important;
+  border-radius: 6px;
+}
+
+.mat-input-element {
+  color: black;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+  color: white;
+}
+
+.msg {
+  color: white;
+  text-align: center;
+}
+
+/* Footer (same as front page) */
+.footer {
+  background-color: #f9f6fc;
+  text-align: center;
+  padding: 30px 20px 20px 20px;
+  font-size: 14px;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+  border-radius: 16px;
+}
+.footer-links {
+  margin-bottom: 10px;
+}
+.footer-links a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #666;
+  font-weight: 500;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Enabled state (inherited from Angular Material with primary color) */
+.custom-register-btn {
+  background-color: #3f51b5; /* your primary color */
+  color: white;
+  transition: 0.3s ease;
+}
+
+/* Hover effect (optional override if needed) */
+.custom-register-btn:hover:not([disabled]) {
+  background-color: #303f9f; /* slightly darker shade */
+  color: white;
+}
+
+/* Disabled state override */
+.custom-register-btn:disabled,
+.custom-register-btn[disabled] {
+  background-color: #9e9e9e !important;  /* grey */
+  color: #e0e0e0 !important;            /* lighter text */
+  cursor: not-allowed;
+}
