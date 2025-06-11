@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
 
+const mongoose = require('mongoose');
+ 
 const UserSchema = new mongoose.Schema({
   uname: {
     type: String,
@@ -19,6 +20,8 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
-
+ 
 module.exports = mongoose.model('User', UserSchema);

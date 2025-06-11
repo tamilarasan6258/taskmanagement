@@ -14,19 +14,24 @@ dotenv.config();
 const app = express();
  
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:4200',
+  credentials: true
+}));
 app.use(express.json());
  
 // MongoDB Connection
 connectDB();
  
-// Use global error handling middleware
-app.use(handleErrors);
- 
+
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes); // Task routes
+
+// Use global error handling middleware
+app.use(handleErrors);
+ 
  
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
