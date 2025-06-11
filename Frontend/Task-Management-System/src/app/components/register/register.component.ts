@@ -8,10 +8,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule, CommonModule,RouterModule, MatInputModule, MatButtonModule, MatCardModule, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule,RouterModule, MatInputModule, MatButtonModule, MatCardModule, ReactiveFormsModule,MatIconModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -27,6 +28,15 @@ export class RegisterComponent {
   otpMsg = '';
 
   constructor(private auth: AuthService, private router: Router) {}
+
+isMobileMenuOpen = false;
+
+
+menuOpen = false;
+
+toggleMenu() {
+  this.menuOpen = !this.menuOpen;
+}
 
   register()
   {

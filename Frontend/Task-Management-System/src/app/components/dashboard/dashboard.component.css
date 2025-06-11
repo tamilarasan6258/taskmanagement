@@ -1,145 +1,207 @@
+/* ==========================================================================
+   Base & Layout Styles for the .main container
+   ========================================================================== */
 .main {
-  margin: 0;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(135deg, #dcd3f7, #e8d9f1);
+  flex-grow: 1;
+  background-color: #f8f9fa; /* Very light gray background for the page */
+  font-family: 'Inter', sans-serif; /* Recommended font-family */
+  color: #343a40; /* Dark gray for main text */
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  /* background-color: white; */
-  /* border-radius: 16px; */
-  margin: 20px;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 22px;
-}
-.logo-img {
-  height: 32px;
-  width: auto;
-}
-.nav-links a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #999;
-  font-weight: 500;
-}
-.nav-links a.active {
-  color: black;
-}
-
-
-/* Dashboard Container */
-.dashboard {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* Header with Proper Alignment */
+/* ==========================================================================
+   Dashboard Header Styles
+   ========================================================================== */
 .dashboard-header {
+  background-color: #0056b3; /* Dark blue header */
+  color: #ffffff; /* White text */
+  padding: 1rem 2rem; /* Top/bottom and left/right padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 24px;
-  margin-bottom: 24px;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  flex-shrink: 0; /* Prevent header from shrinking */
+  position: sticky; /* Keep header fixed at the top */
+  top: 0;
+  z-index: 1000; /* Ensure it stays on top */
+  flex-wrap: wrap; 
 }
 
-.welcome-msg {
-  font-size: 28px;
+.dashboard-header .navbar {
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  
+  gap: 48px; /* Space between logo and nav links */
+}
+
+.dashboard-header .logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem; /* Large font for logo text */
   font-weight: 700;
-  color: white;
-  margin-right: 67%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 14px 24px;
-  border-radius: 12px;
-  display: inline-block;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  color: #ffffff;
 }
 
-/* Header Right (Search & Profile) */
+.dashboard-header .logo-img {
+  height: 40px;
+  margin-right: 12px;
+}
+
+.dashboard-header .nav-links {
+  display: flex;
+  margin-right: 30px;
+  gap: 40px; /* Space between nav links */
+}
+
+.dashboard-header .nav-links a {
+  color: #ffffff;
+  font-weight: 600; /* Use this instead of <b> tag in HTML */
+  padding: 5px 0;
+  transition: color 0.3s ease, transform 0.2s ease;
+  text-decoration: none; /* Remove default underline */
+}
+
+.dashboard-header .nav-links a:hover {
+  color: #cce5ff; /* Lighter blue on hover */
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
 .header-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
-/* Search Input */
+/* Search Bar */
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .search-input {
-  padding: 12px 18px;
-  font-size: 14px;
-  border-radius: 25px;
-  border: 2px solid #e0e0e0;
-  width: 220px;
-  transition: all 0.3s ease;
-  background: white;
-  font-family: inherit;
+  padding: 0.6rem 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 1rem;
+  width: 200px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .search-input:focus {
-  width: 300px;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.3);
   outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
 }
 
-/* Profile Icon & Dropdown */
+/* Profile Dropdown */
 .profile-container {
   position: relative;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease-out;
+}
+
+.profile-container:hover {
+  transform: translateY(-2px);
 }
 
 .profile-icon {
-  font-size: 32px !important;
-  color: #667eea;
-  padding: 7px;
-  transition: all 0.3s ease;
-}
-
-.profile-icon:hover {
-  color: #764ba2;
-  transform: scale(1.1);
+  font-size: 2.5rem;
+  padding: 15px;
+  margin-bottom: 7px;
+  color: #ffffff;
 }
 
 .profile-dropdown {
   position: absolute;
-  top: 50px;
+  top: calc(100% + 8px); /* Position below profile icon */
   right: 0;
-  width: 180px;
-  background: white;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
-  z-index: 1000;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  min-width: 180px;
+  z-index: 10;
   overflow: hidden;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .profile-option {
-  padding: 12px 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 14px;
+  padding: 8px 16px;
+  color: #343a40; /* Dark gray text */
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.profile-name {
-  background: #f8f9fa;
-  font-weight: 600;
-  color: #333;
+.profile-option:hover {
+  background-color: #f1f3f5; /* Light gray background on hover */
+}
+
+.profile-option.profile-name {
+  font-weight: 700;
+  border-bottom: 1px solid #e0e0e0; /* Light gray border */
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  color: #0056b3; /* Dark blue */
+}
+
+.profile-option.profile-email {
+  color: #6c757d; /* Light gray text */
+  font-size: 0.85rem;
   border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
 }
 
-.logout:hover {
-  background: #ff4757;
-  color: white;
+.profile-option.logout {
+  color: #dc3545; /* Red for logout option */
+  font-weight: 600;
+}
+
+.profile-option.logout:hover {
+  background-color: #ffebeb; /* Light red background on hover */
+}
+
+/* ==========================================================================
+   Dashboard Content Styles
+   ========================================================================== */
+.dashboard {
+  flex-grow: 1;
+  padding: 32px;
+  background-color: #f8f9fa;
+  margin-top: 50px;
+}
+
+::ng-deep .mat-menu-item {
+  padding: 10px 16px;
+}
+
+::ng-deep .mat-icon {
+  margin-right: 8px;
+  font-size: 20px;
 }
 
 /* Top Bar (New Project Button Right-Aligned) */
@@ -392,7 +454,6 @@
   text-decoration: underline;
 }
 
-
 .pagination-controls {
   display: flex;
   justify-content: center;
@@ -404,4 +465,98 @@
 .page-info {
   font-weight: 500;
   font-size: 14px;
+}
+
+
+
+.dashboard-header {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 96%;
+    background-color: #0056b3;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Show/hide based on screen size */
+.desktop-only {
+  display: flex;
+}
+
+.menu-icon {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #0056b3;
+  padding: 1rem 2rem;
+}
+
+.mobile-menu .nav-links.mobile-nav a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  display: flex;
+}
+
+.mobile-search .search-input {
+  width: 100%;
+}
+
+/* Override profile dropdown z-index for mobile */
+.mobile-profile .profile-dropdown {
+  z-index: 2000;
+}
+
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 72px; /* set to header's height */
+  left: 0;
+  right: 0;
+  background-color: #0056b3;
+  padding: 1rem 2rem;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 999;
+}
+
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .mobile-menu {
+    /* margin-top: 10%; */
+    display: flex;
+  }
+
+  .dashboard-header {
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
 }

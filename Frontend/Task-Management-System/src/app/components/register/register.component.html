@@ -1,17 +1,28 @@
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div class="register-page">
   <!-- Reused Header -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/VisnuPriyaa19/Task-Management-System/refs/heads/visnu/Frontend/Task-Management-System/src/assets/images/logo.png" alt="KanBoard Logo" class="logo-img" />
-      <span>KanBoard</span>
-    </div>
-    <nav class="nav-links">
-      <a routerLink="/"><b>Home</b></a>
-      <a href="#feature"><b>Features</b></a>
-      <a href="#"><b>About Us</b></a>
-      <a href="#"><b>Support</b></a>
-    </nav>
-  </header>
+<header class="navbar">
+  <div class="logo">
+    <img src="https://raw.githubusercontent.com/VisnuPriyaa19/Task-Management-System/refs/heads/visnu/Frontend/Task-Management-System/src/assets/images/logo.png" alt="KanBoard Logo" class="logo-img" />
+    <span>KanBoard</span>
+  </div>
+
+  <!-- Hamburger Icon for Mobile -->
+  <button class="menu-toggle" (click)="toggleMenu()">
+    &#9776; <!-- Unicode hamburger -->
+  </button>
+
+  <!-- Toggleable Nav Links -->
+  <nav class="nav-links" [class.show]="menuOpen">
+    <a routerLink="/"><b>Home</b></a>
+    <a href="#feature"><b>Features</b></a>
+  </nav>
+</header>
+
+
+
 
   <!-- Registration Form -->
   <main class="register-container">

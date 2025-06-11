@@ -69,6 +69,13 @@ export class DashboardComponent implements OnInit {
   currentPage: number = 1;
 projectsPerPage: number = 6; // adjust as needed
 
+isMobileMenuOpen = false;
+
+toggleMobileMenu() {
+  this.isMobileMenuOpen = !this.isMobileMenuOpen;
+}
+
+
 get paginatedProjects(): any[] {
   const filtered = this.getFilteredProjects();
   const start = (this.currentPage - 1) * this.projectsPerPage;

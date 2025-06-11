@@ -1,0 +1,94 @@
+:root {
+  /* Colors */
+  --color-primary: #007bff; /* Blue */
+  --color-primary-dark: #0056b3;
+  --color-primary-light: #cce5ff;
+  --color-accent: #17a2b8; /* Info Blue/Cyan */
+  --color-accent-dark: #138496;
+  --color-success: #28a745; /* Green */
+  --color-success-dark: #218838;
+  --color-warning: #ffc107; /* Yellow/Orange */
+  --color-warning-dark: #e0a800;
+  --color-danger: #dc3545; /* Red */
+  --color-danger-dark: #bd2130;
+  --color-text-dark: #343a40; /* Dark gray for main text */
+  --color-text-medium: #495057; /* Medium gray */
+  --color-text-light: #6c757d; /* Light gray for secondary text */
+  --color-background-light: #f8f9fa; /* Very light gray */
+  --color-background-medium: #e9ecef; /* Slightly darker light gray */
+  --color-background-dark: #f1f3f5; /* Another shade for cards/columns */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-border: #e0e0e0; /* Light gray border */
+
+  /* Spacing */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Font Sizes */
+  --font-size-base: 1rem;
+  --font-size-sm: 0.9rem;
+  --font-size-md: 1.1rem;
+  --font-size-lg: 1.8rem;
+  --font-size-xl: 2.5rem;
+  --font-size-xxl: 3.5rem;
+
+  /* Border Radius */
+  --border-radius-sm: 5px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-circle: 50%;
+
+  /* Transitions */
+  --transition-ease: all 0.3s ease;
+  --transition-fast: all 0.2s ease-out;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--color-background-light);
+  color: var(--color-text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Global container for all pages to ensure consistent flex behavior */
+.main, .register-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  flex-grow: 1;
+}
+
+/* Global Link Styles */
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Global Button Base Styles */
+button {
+  cursor: pointer;
+  border: none;
+  transition: var(--transition-fast);
+}

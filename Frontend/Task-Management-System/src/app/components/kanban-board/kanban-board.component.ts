@@ -16,7 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskDialogComponent } from '../add-task-dialog/add-task-dialog.component';
 import { TaskDetailsDialogComponent } from '../task-details-dialog/task-details-dialog.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -27,6 +27,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { TaskService } from '../../services/tasks/task.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-kanban-board',
@@ -53,11 +54,15 @@ export class KanbanBoardComponent implements OnInit {
   private taskService = inject(TaskService);
   private dialog = inject(MatDialog);
   private route = inject(ActivatedRoute);
+  private authService =inject(AuthService); 
+  private router = inject(Router);
 
   projectId!: string;
   projectTitle: string = '';
 
-  
+  username: string = '';
+email: string = '';
+
 
   statuses = ['backlog', 'to-do', 'in-progress', 'done'];
   dropListIds = this.statuses;
@@ -78,7 +83,7 @@ export class KanbanBoardComponent implements OnInit {
 endDate: Date | null = null;
 
 
-
+isProfileMenuOpen = false;
 
 
 
@@ -88,8 +93,30 @@ endDate: Date | null = null;
       console.log(this.selectedDueDate,"dsd");
       this.loadProject();
       this.loadTasks();
+
+
+      // ✅ Load user info (adjust based on how you store user data)
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  this.username = user.uname || 'Guest';
+  this.email = user.email || 'Not Available';
     });
   }
+
+toggleProfileMenu(event: MouseEvent) {
+  event.stopPropagation();
+  this.isProfileMenuOpen = !this.isProfileMenuOpen;
+}
+
+onClickOutside(event: MouseEvent) {
+  if (!(event.target as HTMLElement).closest('.profile-container')) {
+    this.isProfileMenuOpen = false;
+  }
+}
+  
+  logout() {
+  this.authService.logout();
+    this.router.navigate(['/login']); // Back to login
+}
 
   // loadProject() {
   //   this.taskService.getProjectById(this.projectId).subscribe(project => {
@@ -146,7 +173,7 @@ searchTerm: string = '';
 
 
 // Add below your existing properties
-pageSize = 5; // Number of tasks per page
+pageSize = 4; // Number of tasks per page
 currentPage: { [key: string]: number } = {
   'backlog': 0,
   'to-do': 0,

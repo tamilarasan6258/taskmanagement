@@ -1,37 +1,65 @@
 <div class="main">
 <header class="dashboard-header">
-  <!-- Left: Logo and Website Name -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/VisnuPriyaa19/Task-Management-System/refs/heads/visnu/Frontend/Task-Management-System/src/assets/images/logo.png" alt="KanBoard Logo" class="logo-img" />
-      <span>KanBoard</span>
-    </div>
+  <div class="logo">
+    <img src="https://raw.githubusercontent.com/VisnuPriyaa19/Task-Management-System/refs/heads/visnu/Frontend/Task-Management-System/src/assets/images/logo.png" alt="KanBoard Logo" class="logo-img" />
+    <span>KanBoard</span>
+  </div>
+
+  <!-- Hamburger Menu Icon -->
+  <button class="menu-icon" (click)="toggleMobileMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Navigation + Search + Profile (Desktop view) -->
+  <div class="header-right desktop-only">
     <nav class="nav-links">
       <a routerLink="/"><b>Home</b></a>
+      
       <a href="#feature"><b>Features</b></a>
-      <a href="#"><b>About Us</b></a>
-      <a href="#"><b>Support</b></a>
     </nav>
-  </header>
 
-  <!-- Right: Search and Profile -->
-  <div class="header-right">
-    <!-- Search -->
     <div class="search-bar">
       <input [(ngModel)]="searchTerm" class="search-input" placeholder="Search projects..." />
     </div>
 
-    <!-- Profile -->
     <div class="profile-container" (click)="toggleProfileMenu($event)">
       <mat-icon class="profile-icon">account_circle</mat-icon>
       <div *ngIf="isProfileMenuOpen" class="profile-dropdown">
         <div class="profile-option profile-name">{{ username }}</div>
-          <div class="profile-option profile-email">{{ email }}</div>  
+        <div class="profile-option profile-email">{{ email }}</div>  
         <div class="profile-option logout" (click)="logout()">Logout</div>
       </div>
     </div>
   </div>
+
+  
 </header>
+
+
+<!-- Mobile Menu -->
+  <div class="mobile-menu" *ngIf="isMobileMenuOpen">
+
+    
+    <nav class="nav-links mobile-nav">
+      <a routerLink="/">Home</a>
+    <b></b>
+      <a href="#feature">Features</a>
+    </nav>
+
+    <div class="search-bar mobile-search">
+      <input [(ngModel)]="searchTerm" class="search-input" placeholder="Search..." />
+    </div>
+
+    <div class="profile-container mobile-profile" (click)="toggleProfileMenu($event)">
+      <mat-icon class="profile-icon">account_circle</mat-icon>
+      <div *ngIf="isProfileMenuOpen" class="profile-dropdown">
+        <div class="profile-option profile-name">{{ username }}</div>
+        <div class="profile-option profile-email">{{ email }}</div>  
+        <div class="profile-option logout" (click)="logout()">Logout</div>
+      </div>
+    </div>
+  </div>
+
 
 
 
