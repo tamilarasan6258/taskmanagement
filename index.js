@@ -2,9 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const connectDB = require('./config/db');
-const { handleErrors } = require("./handlers/errorhandler");
- 
+const connectDB = require('./config/db'); 
 const authRoutes = require('./routes/authRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const taskRoutes = require('./routes/taskRoutes');
@@ -29,8 +27,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes); // Task routes
 
-// Use global error handling middleware
-app.use(handleErrors);
+
  
  
 const PORT = process.env.PORT || 5000;
